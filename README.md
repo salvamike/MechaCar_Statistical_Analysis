@@ -40,7 +40,7 @@
 ![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/tres3.png)
 
 ## Study Design: MechaCar vs Competition
-> Goal: illustrate how MechaCar competes better than the competition vehicles based on statistically significant consumer preferences.
+> ***Goal: illustrate how MechaCar competes better than the competition vehicles based on statistically significant consumer preferences.***
 
 > Test Metrics:
  >> - Cost
