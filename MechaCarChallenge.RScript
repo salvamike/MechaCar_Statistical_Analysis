@@ -1,0 +1,8 @@
+install.packages("tidyverse")
+install.packages("jsonlite")
+
+# Deliverable 1 Step 3
+library(dplyr)
+
+# Deliverable 1 Step 4
+mecha_car <- read.csv(file='MechaCar_mpg.csv')

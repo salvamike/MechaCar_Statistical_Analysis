@@ -1,53 +1,58 @@
 # MechaCar_Statistical_Analysis
 
-## Overview
-In this analysis, I used R to explore MechaCar production data in order to troubleshoot issues that are blocking AutosRUs' manufacturing process.
+## Linear Regression to Predict MPG
+### Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Linear_Model_Function.png)
+> There were five variables or coefficients in the data source [MechaCar_mpg.csv](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/MechaCar_mpg.csv) including vehicle_length, vehicle_weight, spoiler_angle, ground_clearance and AWD. Of the five variables or coeffieients used in the linear regression model it was determined vehicle weight, spoiler weight, and AED provided a non-random amount of variance. This means that the variance of the said variables were zero. Essentially, the variables will not fluctuate or change in value. Conversly, the ground_clearance and vehicle_length proved to have random amount of variance. This means that these variables are likely to fluctuate or change in value.
 
-## Results
-Linear Regression to Predict MPG
-I performed multiple linear regression analysis to identify which variables in the dataset predict the mpg of MechaCar prototypes.
+### Is the slope of the linear model considered to be zero? Why or why not?
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Linear_Model_Function.png)
+> To determine if the linear regression slope is zero or not zero we use this syntax:
+  >> - Ho : The slope of the linear model is zero, or m = 0
+  >> - Ha : The slope of the linear model is not zero, or m ≠ 0
+  
+> If there is no significant linear relationship there would be a flat line with a slop of 0, essentially Ho or m=0. If there is a significant linear relationship thre would be a slope higher than 0, essentially Ha or m /= 0. In the case of this linear regression the slope, labeled as "Intercept" in R is a value of -1. Therefore, the slope is considered to not be zero.
 
+### Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Summary_Function.png)
+> To predict the effeciveness of the linear model we have to view the r-squared(r2) value, as this is the coefficient and determines how well the model data can apply to real world data points. An r-squared will typically range from 0 to 1. For the mpg linear regression the "Multiple R-Squared" metric was 0.7149 (see image above). This number falls within the 0 to 1 range demonstrating effectivness and application to real world data. Essentially, proving this linear regression statistically sound.
 
-## total_summary
+## Summary Statistics on Suspension Coils
+### The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch. Does the current manufacturing data meet this design specification for all manufacturing lots in total and each lot individually? Why or why not?
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Total_Summary.png)
 
-I then wrote an RScript that creates a lot_summary dataframe using the group_by() and the summarize() functions to group each manufacturing lot by the mean, median, variance, and standard deviation of the suspension coil’s PSI column.
+> Based on the design specifications for the MechCar suspension coils the "Total_Summary" indicates that the total pounds per square inch are within 100 pounds of presure. Therefore, on the total all the manufactoring lots meet this design specifications.
 
-The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch.
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Lot_Summario.png)
 
-Does the current manufacturing data meet this design specification for all manufacturing lots in total and each lot individually? Why or why not?
-It meets this specification for lots in total, however, Lot 3 individually does not. The variance of the suspension coils in Lot 3 exceeds 100 pounds per square inch. Its variance is 170 pounds per square inch. Lot 3's mean and median are also slightly smaller, and its standard deviation is larger than that of Lots 1 and 2.
+> In comparison, looking at the "Lot_Summary" you can see that of the three lots only Lot1 and Lot2 are within the appropriate amount of variance. Lot1 has a variance of 0.97 and Lot2 has a 7.469 variance. What this means is because the variance of the data points are so close to the mean of "0" they have small variance which is prefered. However, Lot3 has a variance of 107.28. This indicates a high variance and that the data points are spread out in Lot3 cars. This is not prefered. 
 
-T-Tests on Suspension Coils
-In this deliverable, I performed t-tests to determine if the PSI for each manufacturing lot is statistically different from the population mean of 1,500 pounds per square inch. I wrote RScripts using the t.test() function.
+> Essentiall the "Total_Summary" = meets standards and "Lot_Summary" = doesn't meet standards.
 
-The following shows the summary of the t-tests:
+## T-Tests on Suspension Coils
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/T_Test.png)
 
-t_test_total.png
+> The important value to look at for the T-Test is the "p-value". Based on the image above after running the T-Test to show if the PSI across all manufacoring lots is statistically different from the population mean of 1,500 pounds per square inch, it is determined that the p-value is above the significance level. A common significance level is 0.05%. The T-Test has a 0.06% p-value provind there is not sufficient evidence to reject the null hypothesis because the two means are statistically similar.
 
-This p-value for all is 0.5578, which is above above our significance level. Therefore, we do not have sufficient evidence to reject the null hypothesis.
+> Below are the t-tests for each individual subset manufactoring lots. Of Lot1, Lot2 and Lot3 the only one to be within the 0.05% significance level is Lot3. Therefore the other two are not sufficient evidenct to reject the null hypothesis and for Lot3 we would accept the null hypothesis.
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/Uno_1.png)
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/dos_2.png)
+![Screenshot](https://github.com/salvamike/MechaCar_Statistical_Analysis/blob/main/tres_3.png)
 
-The three individual t-tests for each lot:
+## Study Design: MechaCar vs Competition
+> Goal: illustrate how MechaCar competes better than the competition vehicles based on statistically significant consumer preferences.
 
-
-The sample means for lots 1 and 2 are 1500 and 1500.2 respectively, which matches the population mean of 1500. The p-values for lots 1 and 2 are 1.00 and 0.61, which are both above the significance level. These two lots are statisatically similar to the population.
-
-On the other hand, Lot 3 yielded a slightly different sample mean of 1492 and a p-value of 0.04, which is less than the significance level of 0.05. For this case specifically, there is sufficient evidence to reject the null hypothesis and state that the two means are statistically different.
-
-Production lot 3 may need a deeper examination in order to resolve the differences in suspension coils.
-
-Study Design: MechaCar vs Competition
-For the next part of this project, I designed a study to quantify how the MechaCar performs against the competition. I considered different metrics that would be of interest to a consumer: cost, city or highway fuel efficiency, horse power, maintenance cost, and safety rating.
-
-What metric or metrics are you going to test?
-I would test city and highway fuel efficiency and maintenance cost.
-
-What is the null hypothesis or alternative hypothesis?
-The null hypothesis would be: MechaCar has the same fuel efficiencies as competitors in the same class. The alternative hypothesis is that the fuel efficiencies are not all the same for each car in the class.
-
-What statistical test would you use to test the hypothesis? And why?
-I would use two-sample t-test because the success metrics are numerical (city and highway fuel efficiency) and the sample size is large. There are a number of other cars from different makers that are currently on the market to which we can compare the MechaCar.
-
-What data is needed to run the statistical test?
-In order to run the statistical test, the data needed includes the city fuel efficiency (city and highway mpgs), and maintenance cost (totals) for each car model. Maintenance cost data needed would include the cost for any repairs and other services needed. For current/next year newer models, there may not be as much data since these models most likely will not have needed much maintenance work performed.
-
-It would be interesting to see how MechaCar compares to other cars in fuel efficiency and maintenance cost.
+> Test Metrics:
+ >> - Cost
+ >> - Fuel Efficiency
+ >> - Style
+ 
+> Null Hypothesis: Cost, fuel efficiency, and style have no affect on customers choosing vehicles.
+ 
+ > Statistical Tests:
+ >> - Develop a primary level database of vehicle data for Mecha Care and competition.
+ >> - Run linear regression to predict consumer preference.
+ >> - Create a dataframe for mean, median, variance and standard deviation for population consumer preferences and for each preference individually.
+ >> - Run a t-test on each preference
+ 
+> Data: The data needed for the datasource includes the cost, fuel efficiency, style of MechaCar and competitions vehicles, national survey data for consumer preferences, manufactorer, make, and model.
